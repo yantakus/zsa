@@ -63,54 +63,54 @@ export type TServerActionResult<
   TServerAction extends TAnyZodSafeFunctionHandler,
 > =
   | {
-    // loading state
-    isLoading: true
-    isLoadingOptimistic: false
-    data: undefined
-    isError: false
-    error: undefined
-    isSuccess: false
-    status: "loading"
-  }
+      // loading state
+      isLoading: true
+      isLoadingOptimistic: false
+      data: undefined
+      isError: false
+      error: undefined
+      isSuccess: false
+      status: "loading"
+    }
   | {
-    // loading state
-    isLoading: true
-    isLoadingOptimistic: true
-    data: inferServerActionReturnData<TServerAction>
-    isError: false
-    error: undefined
-    isSuccess: false
-    status: "loading"
-  }
+      // loading state
+      isLoading: true
+      isLoadingOptimistic: true
+      data: inferServerActionReturnData<TServerAction>
+      isError: false
+      error: undefined
+      isSuccess: false
+      status: "loading"
+    }
   | {
-    // idle state
-    isLoading: false
-    isLoadingOptimistic: false
-    data: undefined
-    isError: false
-    error: undefined
-    isSuccess: false
-    status: "idle"
-  }
+      // idle state
+      isLoading: false
+      isLoadingOptimistic: false
+      data: undefined
+      isError: false
+      error: undefined
+      isSuccess: false
+      status: "idle"
+    }
   | {
-    // error state
-    isLoading: false
-    isLoadingOptimistic: false
-    data: undefined
-    isError: true
-    error: unknown
-    isSuccess: false
-    status: "error"
-  }
+      // error state
+      isLoading: false
+      isLoadingOptimistic: false
+      data: undefined
+      isError: true
+      error: unknown
+      isSuccess: false
+      status: "error"
+    }
   | {
-    isLoading: false
-    isLoadingOptimistic: false
-    data: inferServerActionReturnData<TServerAction>
-    isError: false
-    error: undefined
-    isSuccess: true
-    status: "success"
-  }
+      isLoading: false
+      isLoadingOptimistic: false
+      data: inferServerActionReturnData<TServerAction>
+      isError: false
+      error: undefined
+      isSuccess: true
+      status: "success"
+    }
 
 type ServerActionsKeyFactory<TKey extends string[]> = {
   [key: string]: (...args: any[]) => TKey
@@ -131,11 +131,11 @@ export const createServerActionsKeyFactory = <
 
 type TServerActionUtilsContext<T extends string[]> = {
   $$refetch:
-  | undefined
-  | {
-    timestamp: number
-    key: string
-  }
+    | undefined
+    | {
+        timestamp: number
+        key: string
+      }
   refetch: (keys: T) => void
 }
 
@@ -143,7 +143,7 @@ const ServerActionUtilsContext = createContext<
   TServerActionUtilsContext<string[]>
 >({
   $$refetch: undefined,
-  refetch: () => { },
+  refetch: () => {},
 })
 
 const ACTION_KEY_SEPARATOR = "<|break|>"
@@ -196,7 +196,7 @@ export const setupServerActionHooks = <
         ServerActionKeys<TFactory>
       > = {
         $$refetch: undefined,
-        refetch: () => { },
+        refetch: () => {},
       }
 
       return defaultState
@@ -240,13 +240,13 @@ export const setupServerActionHooks = <
     const { $$refetch } = useServerActionsUtils()
     const [oldResult, setOldResult] = useState<
       | {
-        status: "empty"
-        result: undefined
-      }
+          status: "empty"
+          result: undefined
+        }
       | {
-        status: "filled"
-        result: TResult
-      }
+          status: "filled"
+          result: TResult
+        }
     >({
       status: "empty",
       result: undefined,
@@ -330,14 +330,14 @@ export const setupServerActionHooks = <
       async (
         fn:
           | ((
-            current: typeof result.data
-          ) => NonNullable<Awaited<ReturnType<TServerAction>>[0]>)
+              current: typeof result.data
+            ) => NonNullable<Awaited<ReturnType<TServerAction>>[0]>)
           | NonNullable<Awaited<ReturnType<TServerAction>>[0]>
       ) => {
         const data = isFunction(fn)
           ? fn(
-            oldResult.status === "empty" ? result.data : oldResult.result.data
-          )
+              oldResult.status === "empty" ? result.data : oldResult.result.data
+            )
           : fn
 
         if (oldResult.status === "empty") {

@@ -28,7 +28,7 @@ export default function TopNav({
             className={cn(
               "border-b-2 py-2 border-transparent hover:border-muted text-muted-foreground hover:text-foreground",
               !pathname.includes("/actions/") &&
-              "border-primary hover:border-primary text-foreground"
+                "border-primary hover:border-primary text-foreground"
             )}
           >
             Documentation

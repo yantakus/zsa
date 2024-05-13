@@ -19,7 +19,7 @@ export default function RandomNumberDisplay() {
     actionKey: ["getRandomNumber"],
   })
 
-  console.log('isLoading', queryAction.isLoading)
+  console.log("isLoading", queryAction.isLoading)
 
   return (
     <Card className="not-prose">

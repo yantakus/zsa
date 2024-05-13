@@ -3,7 +3,7 @@
 import {
   createServerActionsKeyFactory,
   setupServerActionHooks,
-} from "server-actions-wrapper/hooks"
+} from "server-actions-wrapper"
 
 export const ActionKeyFactory = createServerActionsKeyFactory({
   getRandomNumber: () => ["getRandomNumber"],

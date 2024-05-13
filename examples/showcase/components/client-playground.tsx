@@ -33,7 +33,7 @@ export default function ClientPlayground() {
       console.log("onStart")
     },
     enabled: Boolean(debouncedInput),
-    actionKey: ['posts', 'details', '123']
+    actionKey: ["posts", "details", "123"],
   })
   const { execute, setOptimistic, data } = useServerAction(generateRandomNumber)
 

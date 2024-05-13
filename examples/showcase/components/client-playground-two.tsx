@@ -1,6 +1,9 @@
 "use client"
 
-import { ActionKeyFactory, useServerActionsUtils } from "@/lib/server-action-hooks"
+import {
+  ActionKeyFactory,
+  useServerActionsUtils,
+} from "@/lib/server-action-hooks"
 
 export default function ClientPlaygroundTwo() {
   const { refetch } = useServerActionsUtils()
@@ -9,7 +12,7 @@ export default function ClientPlaygroundTwo() {
     <div>
       <button
         onClick={async () => {
-          refetch(ActionKeyFactory.postDetails('something'))
+          refetch(ActionKeyFactory.postDetails("something"))
         }}
       >
         refetch
